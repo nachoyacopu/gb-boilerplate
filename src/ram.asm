@@ -1,0 +1,3 @@
+; RAM Addresses
+
+SECTION "LOCAL OAM", WRAM0 [$C000]

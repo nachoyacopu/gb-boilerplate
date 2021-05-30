@@ -1,30 +1,19 @@
 ; GB Main bank - entry point
 
+DEBUG EQU 0
+
 INCLUDE "lib/gbhw.inc" ; standard hardware definitions from devrs.com
 
-; IRQs
-SECTION "Vblank", ROM0[$0040]
-  reti
-
-SECTION "LCDC", ROM0[$0048]
-  reti
-
-SECTION "Timer_Overflow", ROM0[$0050]
-  reti
-
-SECTION "Serial", ROM0[$0058]
-  reti
-
-SECTION "p1thru4", ROM0[$0060]
-  reti
-
+INCLUDE "ram.asm"
+INCLUDE "irq.asm"
+INCLUDE "config.inc"
 
 ; ****************************************************************************************
 ; boot loader jumps to here.
 ; ****************************************************************************************
-SECTION "start", ROM0[$0100]
+SECTION "BOOT", ROM0[$0100]
 nop
-jp begin
+jp Start
 
 ; ****************************************************************************************
 ; ROM HEADER
@@ -35,20 +24,10 @@ jp begin
 ; ****************************************************************************************
 ; Main code Start
 ; ****************************************************************************************
-begin:
-  nop
+SECTION "BOOT_Start", ROM0[$0150]
+Start:
   di
-.wait
+  ld    sp, CONFIG_StackPointer
+.loop:
   halt
-  nop
-  jr .wait
-
-end:
-  halt
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  halt
+  jr .loop
