@@ -1,7 +1,16 @@
-echo Building ROM...
+@echo off
+set name=main
+
+echo Assembling...
 cd src/
-rgbasm -o ../build/main.o main.asm
+rgbasm -o ../build/%name%.o %name%.asm
+
+echo Linking...
 cd ../build
-rgblink -o main.gb main.o
-rgbfix -v -p 0 main.gb
+rgblink -o %name%.gb -m %name%.map -n %name%.sym %name%.o
+
+echo Fixing...
+rgbfix -v -p 0x00 %name%.gb
+
 echo Success!
+
