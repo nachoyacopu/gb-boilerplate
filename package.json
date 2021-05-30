@@ -1,0 +1,8 @@
+{
+  "name": "rgbasm-gb-boilerplate",
+  "version": "0.0.1",
+  "description": "Template to work on GB development",
+  "main": "index.js",
+  "author": "Ignacio Cartes <ignacio.cartes.w@gmail.com>",
+  "license": "ISC"
+}
