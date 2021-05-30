@@ -37,3 +37,13 @@ begin:
   halt
   nop
   jr .wait
+
+end:
+  halt
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  halt

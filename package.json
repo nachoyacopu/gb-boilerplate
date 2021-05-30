@@ -3,6 +3,13 @@
   "version": "0.0.1",
   "description": "Template to work on GB development",
   "main": "index.js",
+  "scripts": {
+    "watch": "watch \"npm run build\" ./src",
+    "build": "build.bat"
+  },
   "author": "Ignacio Cartes <ignacio.cartes.w@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "watch": "^1.0.2"
+  }
 }
